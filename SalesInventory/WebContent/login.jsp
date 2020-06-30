@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>loginjsp</title>
+<title>Sales & Inventory System</title>
 </head>
 <script language="text/javascript">
 document.getElementById('ct1').write('InvalidPassword');
@@ -18,10 +18,8 @@ document.getElementById('ct1').write('InvalidPassword');
 @ throws Exception
 */%>
 
-	
 	<%
-	session.setMaxInactiveInterval(1800);
-	
+	//session.setMaxInactiveInterval(1800);
 String userid=request.getParameter("usr");
 session.putValue("userid",userid);
 session.setAttribute("userid",userid);

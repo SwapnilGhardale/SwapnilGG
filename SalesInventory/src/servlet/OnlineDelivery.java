@@ -41,7 +41,7 @@ import controller.*;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	//	response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+	 	
 	 String oid1=request.getParameter("oid");
 	 int oid=Integer.parseInt(oid1);
 	 SQLControl s=new SQLControl();

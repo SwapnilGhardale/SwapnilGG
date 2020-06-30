@@ -15,6 +15,9 @@ import javax.servlet.http.HttpSession;
 import model.Cart;
 
 
+import java.util.Properties;    
+import javax.mail.*;    
+import javax.mail.internet.*; 
 public class ShoppingCardServlet extends HttpServlet {
 
   
@@ -82,11 +85,52 @@ public class ShoppingCardServlet extends HttpServlet {
                 
             } catch (SQLException e) {
                 System.out.println("SQL Error");
+            }   
+            
+            String to=request.getParameter("mail");
+            if(to!="") {
+        
+            String from="ghsonu2@gmail.com", password="sonugh27", sub="Your Order Receipt", msg="How r u?";  
+                      //Get properties object    
+          
+                      Properties props = new Properties();    
+                      props.put("mail.smtp.host", "smtp.gmail.com");    
+                      props.put("mail.smtp.socketFactory.port", "465");    
+                      props.put("mail.smtp.socketFactory.class",    
+                                "javax.net.ssl.SSLSocketFactory");    
+                      props.put("mail.smtp.auth", "true");    
+                      props.put("mail.smtp.port", "465");    
+                      //get Session   
+                      Session session1 = Session.getDefaultInstance(props,    
+                       new javax.mail.Authenticator() {    
+                       protected PasswordAuthentication getPasswordAuthentication() {    
+                       return new PasswordAuthentication(from,password);  
+                       }    
+                      });    
+                      //compose message    
+                      try {    
+                       MimeMessage message = new MimeMessage(session1);    
+                       message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));    
+                       message.setSubject(sub);    
+                     //  message.setText(msg);    
+                       String tot=request.getParameter("tot");
+                       message.setContent("<h1>Order Details</h1><br><table><tr><th>PaymentMethod</th><th>CustName</th><th>Total Order Amount</th><th>Mobile</th></tr><tr><td>"+payMethod+"</td><td>"+cName+"</td><td>"+tot+"</td><td>"+ctele+"</td></tr></table>","text/html" );  
+                       
+                       //send message  
+                       Transport.send(message);    
+                       System.out.println("message sent successfully");    
+                      } catch (Exception e) {
+                    	  
+                      }    
+                         to=null;
             }
+          
+                        
             //destroy session
-            session.invalidate();
+           // session.invalidate();
+                      session.setAttribute("cart", null);
             out.println("<script type=\"text/javascript\">");
-            out.println("alert('Thank you for using service');");
+            out.println("alert('Success. Thank you for using service. Check your Email for your receipt...');");
             out.println("location='product.jsp';");
             out.println("</script>");
         } else {

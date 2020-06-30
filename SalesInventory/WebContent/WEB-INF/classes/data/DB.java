@@ -9,9 +9,8 @@ public class DB {
 	public static Connection getConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/test", "root", "swapnil");
-			
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test?serverTimezone=UTC", "root", "swapnil");
+			//ec2-18-219-155-20.us-east-2.compute.amazonaws.com:3306/test?serverTimezone=UTC
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

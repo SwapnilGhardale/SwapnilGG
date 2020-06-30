@@ -209,42 +209,44 @@ public class SQLControl {
 	}
  
     
-    public int chkstatus(String oid) throws SQLException {
+    public int chkstatus(int oid) throws SQLException {
     	loadDB();
+    	int c=0;
     	try {
-    		String sql="select status from ordertbl where orderID="+oid;
+    		String sql="select status from ordertbl where OrderID="+oid;
     		rs=st.executeQuery(sql);
     		if(rs.next()) {
-    			if(rs.getString("status").equals("Delivered")) {
-    				return 1;
-    				
-    				
-    			}
+        		String sts=rs.getString(1);
+    			if(sts==null)
+    				c=1;
+    			else if(sts.contentEquals("Processing"))
+						c=2;
     		}
-    	}catch(Exception e)
+    	}catch(SQLException e)
     	{
     		System.out.println("Check Status Failed");
     		
     		con.rollback();
+    		return 0;
     	}
     	finally {
     		st.close();
     		con.close();
-    		
     	}
-    	return 0;
+    	return c;
     }
     
-    public void delivery(String oid) throws SQLException {
+    public void delivery(int oid,String status1) throws SQLException {
     	loadDB();
     	try {
-    		con.setAutoCommit(false);;
+    		con.setAutoCommit(false);
     		st.clearBatch();
-    		String sql="update orderID set status='Processing' where orderid="+oid;
+    		String sql="update ordertbl set status='"+status1+"' where OrderID="+oid+"";
     		st.executeUpdate(sql);
+    		con.commit();
     	}catch(Exception e)
     	{
-    		System.out.println("Status changing failed");
+    		System.out.println("Status changing failed"+e);
     		con.rollback();
     	}
     	finally {

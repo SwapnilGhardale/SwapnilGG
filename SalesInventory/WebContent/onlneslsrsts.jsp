@@ -72,13 +72,12 @@ status=rs.getString(10);
 			<td>
 				<%if(status!=null)out.print(status);else out.println(); %>
 			</td>
-			<td><a href="OnlineDelivery?oid=<%=rs.getInt(1)%>">Forward Order</a></td>
+			<td>
+			<%if(status!=null && status.equals("Delivered")) {%>Order Delivered<%} else {%>
+			<a href="OnlineDelivery?oid=<%=rs.getInt(1)%>">Forward Order</a><%} %>
+			</td>
 		</tr>
-		<%
-}
-
-
-%>
+		<%} %>
 	</table>
 </body>
 </html>

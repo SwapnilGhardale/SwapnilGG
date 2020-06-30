@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,13 +40,18 @@ import controller.*;
      */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-	 String oid=request.getParameter("oid");
+	//	response.getWriter().append("Served at: ").append(request.getContextPath());
+	 	
+	 String oid1=request.getParameter("oid");
+	 int oid=Integer.parseInt(oid1);
 	 SQLControl s=new SQLControl();
 	 try {
-		if(s.chkstatus(oid)==0)
-		 s.delivery(oid);
+		int c= s.chkstatus(oid);
+		 if(c==1)
+		 s.delivery(oid,"Processing");
+		 else if(c==2)
+			 s.delivery(oid,"Delivered");
+	
 		response.sendRedirect("onlneslsrsts.jsp");
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block

@@ -93,7 +93,7 @@ if(value.equals("1"))
   <%
   if(status==true)
   {%>
-	  <p><input type="submit" value="Confirm and Generate Bill" value="confirm" onClick="window.print()" form="sbmit"/></p>
+	  <p><input type="submit" value="Confirm and Generate Bill" value="confirm" onClick="window.print();orderwarn();" form="sbmit"/></p>
   <%} else
   {%><p><input type="submit" value="Confirm and Generate Bill" value="confirm" form="sbmit"/></p>
  <%} 
@@ -109,4 +109,8 @@ if(session.getAttribute("log")!="true"){
 <p align="center"><a href="index.html">Main Page</a></p>
 <%} %>
 </body>
+<script type="text/javascript">
+function orderwarn(){
+	alert("You are about to place the order. Please wait a while to place the order...Thank You");
+}</script>
 </html>

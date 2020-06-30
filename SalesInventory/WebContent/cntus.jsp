@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Query</title>
+<title>Sales & Inventory System</title>
 </head>
 <body>
 

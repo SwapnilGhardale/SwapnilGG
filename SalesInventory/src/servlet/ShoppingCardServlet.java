@@ -119,7 +119,9 @@ public class ShoppingCardServlet extends HttpServlet {
                        //send message  
                        Transport.send(message);    
                        System.out.println("message sent successfully");    
-                      } catch (MessagingException e) {throw new RuntimeException(e);}    
+                      } catch (Exception e) {
+                    	  
+                      }    
                          to=null;
             }
           
@@ -128,7 +130,7 @@ public class ShoppingCardServlet extends HttpServlet {
            // session.invalidate();
                       session.setAttribute("cart", null);
             out.println("<script type=\"text/javascript\">");
-            out.println("alert('Thank you for using service');");
+            out.println("alert('Success. Thank you for using service. Check your Email for your receipt...');");
             out.println("location='product.jsp';");
             out.println("</script>");
         } else {

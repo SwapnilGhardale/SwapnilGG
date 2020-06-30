@@ -18,7 +18,7 @@ VALUES
 'invent',
 'Sales & Inventory',
 'System',
-'sinv@gmail.com');
+'ghardaleswapnil@gmail.com');
 
 CREATE TABLE `stock` (
   `p_id` varchar(45) NOT NULL,

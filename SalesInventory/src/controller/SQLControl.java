@@ -213,7 +213,7 @@ public class SQLControl {
     	loadDB();
     	int c=0;
     	try {
-    		String sql="select status from ordertbl where orderid="+oid;
+    		String sql="select status from ordertbl where OrderID="+oid;
     		rs=st.executeQuery(sql);
     		if(rs.next()) {
         		String sts=rs.getString(1);
@@ -241,12 +241,12 @@ public class SQLControl {
     	try {
     		con.setAutoCommit(false);
     		st.clearBatch();
-    		String sql="update ordertbl set status="+status1+" where orderID="+oid+"";
+    		String sql="update ordertbl set status='"+status1+"' where OrderID="+oid+"";
     		st.executeUpdate(sql);
     		con.commit();
     	}catch(Exception e)
     	{
-    		System.out.println("Status changing failed");
+    		System.out.println("Status changing failed"+e);
     		con.rollback();
     	}
     	finally {

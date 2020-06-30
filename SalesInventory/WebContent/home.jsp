@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Home</title>
+<title>Sales & Inventory</title>
 </head>
 <%
-if(session.getAttribute("log")==null)
+if(session.getAttribute("log")==null || session.isNew())
 	{
 	response.sendRedirect("logout.jsp");
 	}

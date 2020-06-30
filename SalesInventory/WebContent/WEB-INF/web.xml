@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" 
     xmlns="http://java.sun.com/xml/ns/javaee" >
-  <display-name>Shopping2</display-name>
+  <display-name>SalesInventory</display-name>
     <servlet>
         <servlet-name>ShoppingCardServlet</servlet-name>
         <servlet-class>servlet.ShoppingCardServlet</servlet-class>
@@ -35,9 +35,9 @@
         <servlet-name>OnlineDelivery</servlet-name>
         <url-pattern>/OnlineDelivery</url-pattern>
     </servlet-mapping>
-    <session-config>
+    <!-- session-config>
         <session-timeout>
             30
         </session-timeout>
-    </session-config>
+    </session-config-->
 </web-app>

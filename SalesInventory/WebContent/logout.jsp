@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Sales & Inventory System</title>
 </head>
 <body bgcolor="Brown">
 	<table align="Right">
@@ -79,9 +79,9 @@
 		<p align="center">You have logged out successfully!!</p>
 	</h1>
 	<form action="login.jsp" method="post" align="Center">
-			User name:<input type="text" name="usr" required placeholder="Enter Username"/><br>
+			User name:<input type="text" name="usr" required placeholder="Enter Username(Admin)"/><br>
 		<br>
-		<br> Password:<input type="password" name="pwd" required placeholder="Enter Password"/><br>
+		<br> Password:<input type="password" name="pwd" required placeholder="Enter Password(invent)"/><br>
 		<br>
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="submit" value="Login" />
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="Clear"/>
