@@ -1,2 +1,2 @@
 # SwapnilGG
-sales and Inventory Management Grocery Shop Project
+Sales and Inventory Management Grocery Shop Project
